@@ -45,12 +45,12 @@ UICollectionViewDataSource
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.page = @"1";
-    self.pageNum = @"15";
+    self.pageNum = @"10";
     
     self.dataList = [NSMutableArray array];
     [self setUpCollectionView];
     [self getNetData];
-    [self getVideoDateWithPage:self.page];
+    [self getVideoDateWithPage:self.page :YES];
 }
 
 -(void)getNetData{
@@ -77,19 +77,22 @@ UICollectionViewDataSource
     }];
 }
 
--(void)getVideoDateWithPage:(NSString *)page{
+-(void)getVideoDateWithPage:(NSString *)page :(BOOL)isNew {
+    if(isNew) {
+        self.page = @"1";
+    }
+    
     [WsHUD showHUDWithLabel:@"正在获取..." modal:NO timeoutDuration:40.0];
     NSDictionary *dic = @{@"title":self.titleStr ? self.titleStr : @"",
-                          @"tag":self.tag ? self.tag : @"",
-                          @"cate":self.cateID ? self.cateID : @"",
-                          @"sortby":self.sort ? self.sort : @"",
+                          @"tag": @"",
+                          @"cate":self.cateID ? self.cateID : @"-1",
+                          @"sortby": @"",
                           @"page":page,
                           @"limit":self.pageNum
                           };
     [JXAFNetWorking method:@"/mobile/index/search" parameters:dic finished:^(JXRequestModel *obj) {
         if (page.integerValue == 1) {
             [self.dataList removeAllObjects];
-            
         }
         self.page = [NSString stringWithFormat:@"%ld",self.page.integerValue + 1];
         NSMutableArray<SVCHomePageModel*> *tmpAry = [SVCHomePageModel mj_objectArrayWithKeyValuesArray:[obj getResultDictionary][@"lists"]];
@@ -112,7 +115,7 @@ UICollectionViewDataSource
 }
 
 - (void)loadMore{
-    [self getVideoDateWithPage:self.page];
+    [self getVideoDateWithPage:self.page :NO];
 }
 
 -(void)setUpCollectionView{
@@ -130,7 +133,7 @@ UICollectionViewDataSource
     self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf.collectionView.mj_footer resetNoMoreData];
         [weakSelf getNetData];
-        [weakSelf getVideoDateWithPage:@"1"];
+        [weakSelf getVideoDateWithPage:@"1" :YES];
     }];
     self.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMore)];
     
@@ -140,7 +143,7 @@ UICollectionViewDataSource
     
     if (!self.hiddenHeadView) {
         //
-        CGRect advScrollViewrect = CGRectMake(0, 0, SCR_WIDTH, JXHeight(130));
+        CGRect advScrollViewrect = CGRectMake(0, 0, SCR_WIDTH, JXHeight(55));
         self.headView = [[VDKindHeadView alloc] init];
         self.headView.frame= advScrollViewrect;
         SVCWeakSelf;
@@ -148,31 +151,31 @@ UICollectionViewDataSource
             [weakSelf.collectionView.mj_footer resetNoMoreData];
             weakSelf.collectionView.mj_footer.hidden = NO;
             weakSelf.sort = weakSelf.headView.sortList[tag];
-            [weakSelf getVideoDateWithPage:@"1"];
+            [weakSelf getVideoDateWithPage:@"1" :YES];
         };
         self.headView.kindblock = ^(NSInteger tag) {
             [weakSelf.collectionView.mj_footer resetNoMoreData];
             weakSelf.collectionView.mj_footer.hidden = NO;
             NSDictionary *dic = weakSelf.categoryList[tag];
             weakSelf.cateID = dic[@"id"];
-            [weakSelf getVideoDateWithPage:@"1"];
+            [weakSelf getVideoDateWithPage:@"1" :YES];
         };
         self.headView.tagsblock = ^(NSInteger tag) {
             [weakSelf.collectionView.mj_footer resetNoMoreData];
             weakSelf.collectionView.mj_footer.hidden = NO;
             NSDictionary *dic = weakSelf.tagsList[tag];
             weakSelf.tag = dic[@"name"];
-            [weakSelf getVideoDateWithPage:@"1"];
+            [weakSelf getVideoDateWithPage:@"1" :YES];
         };
         
         [self.collectionView addSubview:self.headView];
         
-        self.headView.y = -JXHeight(140);
-        self.collectionView.contentInset = UIEdgeInsetsMake(JXHeight(140), 0, 0, 0);
-        [self.collectionView setContentOffset:CGPointMake(0, -JXHeight(130))];
+        self.headView.y = -JXHeight(55);
+        self.collectionView.contentInset = UIEdgeInsetsMake(JXHeight(55), 0, 0, 0);
+        [self.collectionView setContentOffset:CGPointMake(0, -JXHeight(35))];
         [self.collectionView addSubview:self.headView];
         
-        self.collectionView.mj_header.ignoredScrollViewContentInsetTop = JXHeight(140);
+        self.collectionView.mj_header.ignoredScrollViewContentInsetTop = JXHeight(55);
     }
 }
 

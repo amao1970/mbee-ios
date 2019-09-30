@@ -71,7 +71,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.page = @"1";
-    self.pageNum = @"15";
+    self.pageNum = @"10";
     self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - Knavheight - GetHeightByScreenHeigh(45) - kTabbarHeight + 44);
     self.tableView.backgroundColor = SVCMarginColorf5;
     self.tableView.separatorColor = SVCMarginColorf5;

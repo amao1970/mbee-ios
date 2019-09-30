@@ -77,6 +77,10 @@
     
     self.headView.advBtn.userInteractionEnabled = YES;
     [self.headView.advBtn addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(click_adv)]];
+    
+    self.headView.advImg.userInteractionEnabled = YES;
+    [self.headView.advImg addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(click_advImg)]];
+    
     [self.headView.shareBtn addTarget:self action:@selector(click_share) forControlEvents:UIControlEventTouchUpInside];
     [self.headView.downloadBtn addTarget:self action:@selector(click_download) forControlEvents:UIControlEventTouchUpInside];
     [self.headView.close_advImg addTarget:self action:@selector(click_closeAdvImg) forControlEvents:UIControlEventTouchUpInside];
@@ -154,6 +158,14 @@
     
 }
 
+-(void)click_advImg{
+    NSString *url = self.tiepianLink;
+    NSLog(@"===========>%@", self.tiepianLink);
+    NSLog(@"===========>%@", url);
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:url]]) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+    }
+}
 
 -(void)click_closeAdvImg{
     [self.headView.advImg removeFromSuperview];
@@ -267,12 +279,14 @@
 //            NSDictionary *dic = JSON;
             NSString *img = JSON[@"image"];
             if (img && img.length) {
+                self.tiepianLink = JSON[@"link"];
+                NSLog(@"2222222222222=>%@", self.tiepianLink)
+                
                 self.headView.advImg.hidden = NO;
                 [self.headView.advImg sd_setImageWithURL:[NSURL URLWithString:img] placeholderImage:[UIImage imageNamed:@"默认图"]];
-//
                 
                 self.time = [JSON[@"closeTime"] integerValue];
-//                self.time = 5;
+                //self.time = 500;
                 [self.headView.close_advImg setTitle:[NSString stringWithFormat:@"%ld秒后开始播放",self.time] forState:UIControlStateNormal];
                 self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timer_close) userInfo:nil repeats:YES];
                 self.headView.close_advImg.hidden = NO;

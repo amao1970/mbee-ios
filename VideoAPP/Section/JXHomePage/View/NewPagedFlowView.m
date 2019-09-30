@@ -716,7 +716,7 @@ static NSString *subviewClassName;
 -(UIPageControl *)pageControl
 {
     if (!_pageControl) {
-        CGRect rect = CGRectMake(0, JXHeight(180), SCR_WIDTH, JXHeight(20));
+        CGRect rect = CGRectMake(0, JXHeight(160), SCR_WIDTH, JXHeight(20));
         _pageControl = [[UIPageControl alloc] initWithFrame:rect];
         _pageControl.currentPageIndicatorTintColor = [UIColor colorWithHexString:@"c3b194" andAlpha:1];
         _pageControl.pageIndicatorTintColor = [UIColor colorWithHexString:@"525252" andAlpha:1];

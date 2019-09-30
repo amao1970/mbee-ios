@@ -33,27 +33,57 @@
 
 -(void)setUpMainView
 {
-    CGRect sortRect = CGRectMake(0, JXHeight(15), SCR_WIDTH,JXHeight(36));
-    CGRect kindRect = CGRectMake(0, JXHeight(15)+JXHeight(36), SCR_WIDTH,JXHeight(36));
-    CGRect tagListRect = CGRectMake(0, JXHeight(15)+JXHeight(36)*2, SCR_WIDTH, JXHeight(36));
-    self.sortView = [[UIScrollView alloc] initWithFrame: sortRect];
-    self.sortView.bounces = NO;
+//    CGRect sortRect = CGRectMake(0, JXHeight(15), SCR_WIDTH,JXHeight(36));
+//    self.sortView = [[UIScrollView alloc] initWithFrame: sortRect];
+//    self.sortView.bounces = NO;
+//    UILabel *lab = [[UILabel alloc] init];
+//    lab.frame = CGRectMake(JXWidth(6), JXHeight(7), 50, JXHeight(22));
+//    lab.font = FontSize(12);
+//    lab.textColor = [UIColor hexStringToColor:@"8a8a8a"];
+//    lab.textAlignment = NSTextAlignmentCenter;
+//    lab.text = @"分类";
+//    lab.backgroundColor = [UIColor hexStringToColor:@"efc289"];
+//    lab.layer.cornerRadius = 3;
+//    lab.clipsToBounds = YES;
+//    lab.width = [lab sizeThatFits:lab.size].width + 10;
+//    [self.kindView addSubview:lab];
+//    [self addSubview:self.sortView];
+    
+//    CGRect kindRect = CGRectMake(0, JXHeight(15)+JXHeight(36), SCR_WIDTH,JXHeight(36));
+//    self.kindView = [[UIScrollView alloc] initWithFrame: kindRect];
+//    self.kindView.bounces = NO;
+//    UILabel *sortlab = [[UILabel alloc] init];
+//    sortlab.frame = CGRectMake(JXWidth(6), JXHeight(7), 50, JXHeight(22));
+//    sortlab.font = FontSize(12);
+//    sortlab.textColor = [UIColor hexStringToColor:@"8a8a8a"];
+//    sortlab.textAlignment = NSTextAlignmentCenter;
+//    sortlab.text = @"类型";
+//    sortlab.backgroundColor = [UIColor hexStringToColor:@"efc289"];
+//    sortlab.layer.cornerRadius = 3;
+//    sortlab.clipsToBounds = YES;
+//    sortlab.width = [sortlab sizeThatFits:sortlab.size].width + 10;
+//    [self.sortView addSubview:sortlab];
+//    [self addSubview:self.kindView];
+    
+//    CGRect tagListRect = CGRectMake(0, JXHeight(15)+JXHeight(36)*2, SCR_WIDTH, JXHeight(36));
+//    self.tagListView = [[UIScrollView alloc] initWithFrame: tagListRect];
+//    self.tagListView.bounces = NO;
+//    UILabel *taglab = [[UILabel alloc] init];
+//    taglab.frame = CGRectMake(JXWidth(6), JXHeight(7), 50, JXHeight(22));
+//    taglab.font = FontSize(12);
+//    taglab.textColor = [UIColor hexStringToColor:@"8a8a8a"];
+//    taglab.textAlignment = NSTextAlignmentCenter;
+//    taglab.text = @"标签";
+//    taglab.backgroundColor = [UIColor hexStringToColor:@"efc289"];
+//    taglab.layer.cornerRadius = 3;
+//    taglab.clipsToBounds = YES;
+//    taglab.width = [taglab sizeThatFits:taglab.size].width + 10;
+//    [self.tagListView addSubview:taglab];
+//    [self addSubview:self.tagListView];
+    
+    CGRect kindRect = CGRectMake(0, JXHeight(15), SCR_WIDTH, JXHeight(28));
     self.kindView = [[UIScrollView alloc] initWithFrame: kindRect];
     self.kindView.bounces = NO;
-    self.tagListView = [[UIScrollView alloc] initWithFrame: tagListRect];
-    self.tagListView.bounces = NO;
-    UILabel *lab = [[UILabel alloc] init];
-    lab.frame = CGRectMake(JXWidth(6), JXHeight(7), 50, JXHeight(22));
-    lab.font = FontSize(12);
-    lab.textColor = [UIColor hexStringToColor:@"8a8a8a"];
-    lab.textAlignment = NSTextAlignmentCenter;
-    lab.text = @"分类";
-    lab.backgroundColor = [UIColor hexStringToColor:@"efc289"];
-    lab.layer.cornerRadius = 3;
-    lab.clipsToBounds = YES;
-    lab.width = [lab sizeThatFits:lab.size].width + 10;
-    [self.kindView addSubview:lab];
-    
     UILabel *sortlab = [[UILabel alloc] init];
     sortlab.frame = CGRectMake(JXWidth(6), JXHeight(7), 50, JXHeight(22));
     sortlab.font = FontSize(12);
@@ -65,19 +95,6 @@
     sortlab.clipsToBounds = YES;
     sortlab.width = [sortlab sizeThatFits:sortlab.size].width + 10;
     [self.sortView addSubview:sortlab];
-    
-    UILabel *taglab = [[UILabel alloc] init];
-    taglab.frame = CGRectMake(JXWidth(6), JXHeight(7), 50, JXHeight(22));
-    taglab.font = FontSize(12);
-    taglab.textColor = [UIColor hexStringToColor:@"8a8a8a"];
-    taglab.textAlignment = NSTextAlignmentCenter;
-    taglab.text = @"标签";
-    taglab.backgroundColor = [UIColor hexStringToColor:@"efc289"];
-    taglab.layer.cornerRadius = 3;
-    taglab.clipsToBounds = YES;
-    taglab.width = [taglab sizeThatFits:taglab.size].width + 10;
-    [self.tagListView addSubview:taglab];
-    [self addSubview:self.sortView];
     [self addSubview:self.kindView];
     [self addSubview:self.tagListView];
 }
@@ -102,7 +119,7 @@
 
 -(void)setUpTitleList:(NSMutableArray*)ary view:(UIScrollView*)view
 {
-    __block float BtnX = JXWidth(63);
+    __block float BtnX = JXWidth(0);
     float BtnH = JXHeight(22);
     [ary enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         UIButton *btn = [[UIButton alloc] init];
@@ -135,7 +152,7 @@
         }
         BtnX = btn.right + 5;
         [view addSubview:btn];
-        view.contentSize = CGSizeMake(btn.right + 5, JXHeight(36));
+        view.contentSize = CGSizeMake(btn.right + 5, JXHeight(28));
     }];
 }
 

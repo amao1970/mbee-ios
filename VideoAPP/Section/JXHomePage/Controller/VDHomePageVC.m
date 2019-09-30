@@ -73,9 +73,9 @@ JXFocusImageViewDelegate>
 
 -(void)getNetData
 {
-    [WsHUD showHUDWithLabel:@"加载数据..." modal:YES timeoutDuration:20.0];
+    //[WsHUD showHUDWithLabel:@"加载数据..." modal:YES timeoutDuration:20.0];
     [JXAFNetWorking method:@"/mobile/index/index" parameters:nil finished:^(JXRequestModel *obj) {
-        [WsHUD hideHUD];
+        //[WsHUD hideHUD];
         [self.collectionView.mj_header endRefreshing];
         self.cateList = [obj getResultDictionary][@"cate"];
         self.dataList = [obj getResultDictionary][@"list"];
@@ -103,7 +103,6 @@ JXFocusImageViewDelegate>
 {
     NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
     if (token==nil || token.length == 0) {
-        
         SVCLoginViewController *loginVC = [[SVCLoginViewController alloc]init];
         SVCNavigationController *nav = [[SVCNavigationController alloc]initWithRootViewController:loginVC];
         [self presentViewController:nav animated:YES completion:nil];
@@ -153,15 +152,14 @@ JXFocusImageViewDelegate>
     self.collectionView.backgroundColor = [UIColor hexStringToColor:@"252628"];
     [self.view addSubview:self.collectionView];
     
-    //
-    CGRect advScrollViewrect = CGRectMake(0, JXHeight(20), SCR_WIDTH, JXHeight(200));
+    CGRect advScrollViewrect = CGRectMake(0, JXHeight(20), SCR_WIDTH, JXHeight(190));
     self.advScrollView = [[JXFocusImageView alloc] initWithFrame:advScrollViewrect];
     self.advScrollView.JXDelegate = self;
+    self.advScrollView.y = -JXHeight(190);
     [self.collectionView addSubview:self.advScrollView];
     
-    self.advScrollView.y = -JXHeight(235);
-    self.collectionView.contentInset = UIEdgeInsetsMake(JXHeight(235), 0, 0, 0);
-    [self.collectionView setContentOffset:CGPointMake(0, -JXHeight(235))];
+    self.collectionView.contentInset = UIEdgeInsetsMake(JXHeight(190), 0, 0, 0);
+    [self.collectionView setContentOffset:CGPointMake(0, -JXHeight(190))];
     [self.collectionView addSubview:self.advScrollView];
     
     SVCWeakSelf;
@@ -169,7 +167,7 @@ JXFocusImageViewDelegate>
         [weakSelf getNetData];
     }];
     
-    self.collectionView.mj_header.ignoredScrollViewContentInsetTop = JXHeight(235);
+    self.collectionView.mj_header.ignoredScrollViewContentInsetTop = JXHeight(190);
     //    self.collectionView.mj_header.y = -JXHeight(235);
 }
 

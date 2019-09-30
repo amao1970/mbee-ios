@@ -57,7 +57,7 @@
     
     if (!_selectedItemTitleColor) {
         
-        _selectedItemTitleColor = [UIColor hexStringToColor:@"f75858"];//MSColorForTabBar(234, 103, 7);
+        _selectedItemTitleColor = [UIColor hexStringToColor:@"ffc100"];//MSColorForTabBar(234, 103, 7);
     }
     return _selectedItemTitleColor;
 }

@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) SVCVideoDetailModel *videoInfo;
 @property (nonatomic, strong) NSString *videoID;
 @property (nonatomic, assign) BOOL isPreview;
+@property (nonatomic, strong) NSString *tiepianLink;
 
 @end
 

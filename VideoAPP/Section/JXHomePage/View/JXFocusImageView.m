@@ -49,7 +49,7 @@
 #pragma mark NewPagedFlowView Delegate
 - (CGSize)sizeForPageInFlowView:(NewPagedFlowView *)flowView
 {
-    return CGSizeMake(SCR_WIDTH, JXHeight(180));
+    return CGSizeMake(SCR_WIDTH, JXHeight(160));
 }
 
 - (void)didSelectCell:(UIView *)subView withSubViewIndex:(NSInteger)subIndex
@@ -62,7 +62,7 @@
 }
 
 - (void)didScrollToPage:(NSInteger)pageNumber inFlowView:(NewPagedFlowView *)flowView {
-    NSLog(@"ViewController 滚动到了第%ld页",pageNumber);
+    //NSLog(@"ViewController 滚动到了第%ld页",pageNumber);
 }
 
 #pragma mark NewPagedFlowView Datasource
