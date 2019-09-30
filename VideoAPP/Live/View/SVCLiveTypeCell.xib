@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="SVCLiveTypeCell">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="183"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="200" height="183"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kyp-ZI-JWm">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="183"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clJ-sd-6hk">
+                        <rect key="frame" x="130" y="10" width="60" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="bVk-mw-J7F"/>
+                            <constraint firstAttribute="width" constant="60" id="eHL-l0-kAb"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
+                        <state key="normal" title="1999" image="icon_renshu" backgroundImage="guandanmu_di">
+                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                    </button>
+                    <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XdS-xV-dyA">
+                        <rect key="frame" x="0.0" y="153" width="200" height="30"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="Khf-tc-Y3s"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="人间四月天" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vO0-2p-w0m">
+                        <rect key="frame" x="0.0" y="153" width="200" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="xoN-cj-OdP"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="XdS-xV-dyA" secondAttribute="trailing" id="Bsx-r2-zRB"/>
+                <constraint firstAttribute="bottom" secondItem="Kyp-ZI-JWm" secondAttribute="bottom" id="InD-HT-HJw"/>
+                <constraint firstItem="Kyp-ZI-JWm" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="K2W-SS-DsA"/>
+                <constraint firstAttribute="bottom" secondItem="XdS-xV-dyA" secondAttribute="bottom" id="NZA-3a-rMN"/>
+                <constraint firstItem="clJ-sd-6hk" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="Slg-Hj-gzo"/>
+                <constraint firstAttribute="bottom" secondItem="vO0-2p-w0m" secondAttribute="bottom" id="c8g-X3-Qe4"/>
+                <constraint firstItem="Kyp-ZI-JWm" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="e42-JT-MuX"/>
+                <constraint firstItem="XdS-xV-dyA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="eHW-PG-kpB"/>
+                <constraint firstAttribute="trailing" secondItem="vO0-2p-w0m" secondAttribute="trailing" id="fUU-eu-TJ1"/>
+                <constraint firstAttribute="trailing" secondItem="Kyp-ZI-JWm" secondAttribute="trailing" id="mHB-sT-ReL"/>
+                <constraint firstAttribute="trailing" secondItem="clJ-sd-6hk" secondAttribute="trailing" constant="10" id="py6-6J-sVy"/>
+                <constraint firstItem="vO0-2p-w0m" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="u57-uv-3it"/>
+            </constraints>
+            <size key="customSize" width="200" height="183"/>
+            <connections>
+                <outlet property="imageViewICon" destination="Kyp-ZI-JWm" id="gyD-h0-WZ9"/>
+                <outlet property="liveTitle" destination="vO0-2p-w0m" id="rZ5-st-lnS"/>
+                <outlet property="numButton" destination="clJ-sd-6hk" id="rS2-Qa-UXY"/>
+            </connections>
+            <point key="canvasLocation" x="100" y="118.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="guandanmu_di" width="85" height="35"/>
+        <image name="icon_renshu" width="12" height="10"/>
+    </resources>
+</document>

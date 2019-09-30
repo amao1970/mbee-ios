@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="gTV-IL-0wX" customClass="SVCliveViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="zhiboliebiao_banner" translatesAutoresizingMaskIntoConstraints="NO" id="7Yk-OX-IaU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WYH-m7-X3e">
+                        <rect key="frame" x="30" y="17.5" width="70" height="70"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="70" id="EUz-Nw-69Q"/>
+                            <constraint firstAttribute="width" constant="70" id="Ygh-9x-ai1"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小可爱直播平台" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dC-Eq-Wec">
+                        <rect key="frame" x="105" y="22.5" width="130" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="NCB-8Z-qQu"/>
+                            <constraint firstAttribute="width" constant="130" id="lMp-KL-QhW"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OE9-Nw-qZo">
+                        <rect key="frame" x="245" y="25.5" width="45" height="15"/>
+                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="IVN-9l-fUL"/>
+                            <constraint firstAttribute="width" constant="45" id="fAF-s7-GwD"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
+                        <state key="normal" title="123" image="live_black">
+                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N5W-v1-snt">
+                        <rect key="frame" x="105" y="51.5" width="230" height="1"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="1ie-3l-ALO"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="平台所有直播以及图片全部都是由服务器从第三方获取内容" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1af-9c-Juf">
+                        <rect key="frame" x="105" y="63" width="230" height="31.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="7Yk-OX-IaU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="04P-54-4Ps"/>
+                <constraint firstItem="OE9-Nw-qZo" firstAttribute="bottom" secondItem="1dC-Eq-Wec" secondAttribute="bottom" id="156-pc-agC"/>
+                <constraint firstItem="1af-9c-Juf" firstAttribute="leading" secondItem="WYH-m7-X3e" secondAttribute="trailing" constant="5" id="5rY-vE-Qld"/>
+                <constraint firstAttribute="trailing" secondItem="N5W-v1-snt" secondAttribute="trailing" constant="40" id="AIc-Dg-lXe"/>
+                <constraint firstAttribute="bottom" secondItem="7Yk-OX-IaU" secondAttribute="bottom" id="AKC-Qb-mze"/>
+                <constraint firstItem="WYH-m7-X3e" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="30" id="RHP-co-bQR"/>
+                <constraint firstItem="1dC-Eq-Wec" firstAttribute="top" secondItem="WYH-m7-X3e" secondAttribute="top" constant="5" id="a8k-eP-vJV"/>
+                <constraint firstItem="N5W-v1-snt" firstAttribute="leading" secondItem="WYH-m7-X3e" secondAttribute="trailing" constant="5" id="bvx-I7-73m"/>
+                <constraint firstItem="1dC-Eq-Wec" firstAttribute="leading" secondItem="WYH-m7-X3e" secondAttribute="trailing" constant="5" id="evP-Oq-xsY"/>
+                <constraint firstItem="N5W-v1-snt" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="g61-H8-R3O"/>
+                <constraint firstAttribute="trailing" secondItem="1af-9c-Juf" secondAttribute="trailing" constant="40" id="gGn-0B-1Ig"/>
+                <constraint firstItem="OE9-Nw-qZo" firstAttribute="leading" secondItem="1dC-Eq-Wec" secondAttribute="trailing" constant="10" id="go0-uW-TVZ"/>
+                <constraint firstItem="1af-9c-Juf" firstAttribute="top" secondItem="N5W-v1-snt" secondAttribute="bottom" constant="10" id="gvt-tE-DsO"/>
+                <constraint firstAttribute="trailing" secondItem="7Yk-OX-IaU" secondAttribute="trailing" id="hUD-Xm-ApF"/>
+                <constraint firstItem="WYH-m7-X3e" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="id1-Sh-qAX"/>
+                <constraint firstItem="7Yk-OX-IaU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="lYS-Xv-6gZ"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
+            <size key="customSize" width="351" height="104"/>
+            <connections>
+                <outlet property="contentLa" destination="1af-9c-Juf" id="7ek-gQ-Co6"/>
+                <outlet property="imageViewICon" destination="WYH-m7-X3e" id="7aJ-xV-frg"/>
+                <outlet property="numButton" destination="OE9-Nw-qZo" id="95K-GN-73x"/>
+                <outlet property="titleLa" destination="1dC-Eq-Wec" id="7Es-ZD-duR"/>
+            </connections>
+            <point key="canvasLocation" x="87.5" y="101"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="live_black" width="11" height="8"/>
+        <image name="zhiboliebiao_banner" width="375" height="100"/>
+    </resources>
+</document>
