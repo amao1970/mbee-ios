@@ -259,6 +259,19 @@
     }];
 }
 
+#pragma mark --> 检测用户是否是vip-直播
++ (void)checkLiveVIPWithParams:(NSDictionary *)parameters BlockSuccess:(void (^)(NSInteger, NSString *, NSDictionary *))success andfail:(void (^)(NSError *))fail {
+    NSString *url = [NSString stringWithFormat:@"%@%@",BASE_API,@"/mobile/index/checkUser/?live=1"];
+    [[self initNetHelper] POST:url Parameters:parameters Success:^(id responseObject) {
+        NSLog(@"url == %@  parameters == %@ responseObject == %@",url,parameters,responseObject);
+        NSInteger result=[[responseObject objectForKey:@"code"]integerValue];
+        NSString *message=[responseObject objectForKey:@"msg"];
+        success(result,message,responseObject[@"data"]);
+    } Failure:^(NSError *error) {
+        fail(error);
+    }];
+}
+
 #pragma mark --> 获取直接间广告
 + (void)getOnbordCategoryWithParams:(NSDictionary *)parameters BlockSuccess:(void (^)(NSInteger, NSString *, NSDictionary *))success andfail:(void (^)(NSError *))fail{
     NSString *url = [NSString stringWithFormat:@"%@%@",BASE_API,@"/mobile/adv/live"];

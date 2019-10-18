@@ -29,9 +29,9 @@
         SVCCurrUser *user = [SVCUserInfoUtil mGetUser];
         self.nickName.text = user.nickname;
         if ([user.is_ever isEqualToString:@"1"]) {
-            self.dateLab.text = @"终身会员";
+            //self.dateLab.text = @"终身会员";
         }else{
-            self.dateLab.text = [NSString stringWithFormat:@"VIP到期时间：%@", [self gettime:user.end_time]];
+            //self.dateLab.text = [NSString stringWithFormat:@"VIP到期时间：%@", [self gettime:user.end_time]];
         }
 //        self.nickName.width = [self.nickName sizeThatFits:self.nickName.size].width+5;
 //        self.renewalBtn.x = self.nickName.right+5;

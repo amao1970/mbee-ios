@@ -33,9 +33,9 @@
         _nickNameLab.text = [NSString stringWithFormat:@"昵称：%@",user.nickname];
         NSString *timeStr = [self gettime:user.end_time];
         if ([user.is_ever isEqualToString:@"1"]) {
-            _timeEndLab.text = @"终身会员";
+            //_timeEndLab.text = @"终身会员";
         }else{
-            _timeEndLab.text = [NSString stringWithFormat:@"VIP到期时间：%@",timeStr];
+            //_timeEndLab.text = [NSString stringWithFormat:@"VIP到期时间：%@",timeStr];
         }
        
     }

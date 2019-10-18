@@ -441,9 +441,53 @@
     return [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
 }
 
+// 获取用户信息
+// 获取用户状态
+-(void)reloadHeadView {
+    [JXAFNetWorking method:@"/mobile/user/index" parameters:nil finished:^(JXRequestModel *obj) {
+        NSDictionary *dic = [obj getResultDictionary];
+        
+        self.headView.renewalBtn.userInteractionEnabled = NO;
+        self.headView.income.text = [NSString stringWithFormat:@"%@",dic[@"money"]];
+        self.headView.works.text = [NSString stringWithFormat:@"%@",dic[@"zuoping"]];
+        self.headView.focus.text = [NSString stringWithFormat:@"%@",dic[@"guanzhu"]];
+        self.headView.collection.text = [NSString stringWithFormat:@"%@",dic[@"shoucang"]];
+        
+        if ([dic[@"is_ever"] integerValue] == 1) {
+            [self.tableView.mj_header endRefreshing];
+            [self.headView.renewalBtn setTitle:@"" forState:UIControlStateNormal];
+            self.headView.renewalBtn.userInteractionEnabled = NO;
+        } else {
+            [JXAFNetWorking method:@"/mobile/index/checkUser" parameters:nil finished:^(JXRequestModel *obj) {
+                [self.tableView.mj_header endRefreshing];
+                NSDictionary *dicCheck = [obj getResultDictionary];
+                [self.headView.renewalBtn setTitle: dicCheck[@"vip_content"] forState:UIControlStateNormal];
+                self.headView.renewalBtn.userInteractionEnabled = NO;
+            } failed:^(JXRequestModel *obj) {
+                [self.tableView.mj_header endRefreshing];
+                if (obj.code.integerValue == -1){
+                    [self.headView.renewalBtn setTitle:@"请尽快续费" forState:UIControlStateNormal];
+                    self.headView.renewalBtn.userInteractionEnabled = YES;
+                }else if(obj.code.integerValue == -997){
+                    [self logoutSuccess];
+                }
+            }];
+        }
+    } failed:^(JXRequestModel *obj) {
+        [self.tableView.mj_header endRefreshing];
+        if (obj.code.integerValue == -1){
+            [self.headView.renewalBtn setTitle:@"请尽快续费" forState:UIControlStateNormal];
+            self.headView.renewalBtn.userInteractionEnabled = YES;
+        }else if(obj.code.integerValue == -997){
+            [self logoutSuccess];
+        }
+    }];
+}
+
+/**
+// 旧数据
 -(void)reloadHeadView{
-    
-    
+    NSLog(@"loading");
         [JXAFNetWorking method:@"/mobile/user/index" parameters:nil finished:^(JXRequestModel *obj) {
             [self.tableView.mj_header endRefreshing];
             NSDictionary *dic = [obj getResultDictionary];
@@ -453,7 +497,6 @@
                 [self.headView.renewalBtn setTitle:@"" forState:UIControlStateNormal];
                 self.headView.renewalBtn.userInteractionEnabled = NO;
             }else{
-                
                 if (!isNull([obj getResultDictionary][@"end_time"])) {
                     NSString *str = [NSString stringWithFormat:@"%@",dic[@"end_time"]];
                     user.end_time = str.length ? str : user.end_time;
@@ -467,7 +510,7 @@
                     [self.headView.renewalBtn setTitle:@"VIP生效中" forState:UIControlStateNormal];
                 }
             }
-           self.headView.renewalBtn.userInteractionEnabled = NO;
+            self.headView.renewalBtn.userInteractionEnabled = NO;
             self.headView.income.text = [NSString stringWithFormat:@"%@",dic[@"money"]];
             self.headView.works.text = [NSString stringWithFormat:@"%@",dic[@"zuoping"]];
             self.headView.focus.text = [NSString stringWithFormat:@"%@",dic[@"guanzhu"]];
@@ -484,9 +527,9 @@
             }
         }];
 }
+ */
 
 - (NSDate *)getCurrentTime{
-    
     //2017-04-24 08:57:29
     NSLocale * locale = [NSLocale localeWithLocaleIdentifier:@"zh-CN"];
     NSDateFormatter *formatter=[[NSDateFormatter alloc]init];

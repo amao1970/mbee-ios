@@ -169,7 +169,7 @@
         self.isSelectedCell = YES;
         WS(weakSelf);
         BKNetworkHelper *hepl = [BKNetworkHelper shareInstance];
-        NSString *xmurl = [NSString stringWithFormat:@"%@mobile/index/checkUser",BASE_API];
+        NSString *xmurl = [NSString stringWithFormat:@"%@mobile/index/checkUser/?live=1",BASE_API];
         [hepl POST:xmurl Parameters:nil Success:^(id responseObject) {
             
             NSString *strMsg = [responseObject objectForKey:@"msg"];
